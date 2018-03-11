@@ -77,8 +77,6 @@ class NewBot(commands.Bot):
         print('-------------\n'+ 'NightWatch at service')
 
     async def on_ready(self):
-        '''SET THE UPTIME'''
-        self.uptime = datetime.datetime.utcnow()
         await self.change_presence(game = discord.Game(name="Prefix: n!",type =1))
 
     async def on_command(self, ctx):
