@@ -1,6 +1,8 @@
 import os
 import json
 import discord
+import asyncio
+import myjson
 import re
 from bs4 import BeautifulSoup
 import requests
@@ -67,7 +69,19 @@ class NightWatch:
             print(e)
             await ctx.send("`Some Internal error, sorry :sweat_smile:`")
 
-
+    @commands.command()
+    async def switch(self,ctx,*,switch):
+        if ctx.author.id == 280271578850263040:
+            if switch == None:
+                await ctx.send("`None provided on/off`")
+                return
+            switch = switch.lower()
+            url = "{}".format(os.environ.get("gold_raven_channel"))
+            data = myjson.get(url)
+            data = json.loads(data)
+            data["switch"] = switch
+            url= myjson.store(json.dumps(data),update=url)
+            await ctx.send("`Switch set to on: People cant text, off: people can text.`")
 
     async def on_member_join(self, member):
         '''join for Night Watch'''
@@ -80,7 +94,19 @@ class NightWatch:
         except Exception as e:
             print(e)
 
-
+    async def on_message(self, message):
+        '''Raven channel'''
+        if message.channel.id == 423652777151954945 and message.guild.id == 356157029074862081: #GOLD RAVEN's outfit channel & Nightwatch server
+            url = "{}".format(os.environ.get("gold_raven_channel"))
+            data = myjson.get(url)
+            data = json.loads(data)
+            if message.author.id == self.bot.user.id:
+                return
+            if not message.attachments and data["switch"] == "on":
+                if message.author.guild_permissions.administrator != True and message.author.bot != True:
+                    await message.channel.send(f"{message.author.mention}, please refrain from texting here, just send the screenshot(When announced to) :3", delete_after = 5.2)
+                    await asyncio.sleep(5)
+                    await message.delete()
 
 
 def setup(bot):
