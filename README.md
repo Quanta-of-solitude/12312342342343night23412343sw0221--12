@@ -2,7 +2,7 @@
 
 Bot is/will be hardcoded for the Server Night-Watch, It is not suitable for your work.
 
-
+by: Neophyte#5556
 *Thank You*
 
 
