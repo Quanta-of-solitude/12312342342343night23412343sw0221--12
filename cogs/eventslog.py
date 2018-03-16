@@ -30,7 +30,7 @@ class EventLog:
             data += f"Content:```\n {msg}\n{linkss}"
             channel_id = 424195382172450817   #424195382172450817
             channel = self.bot.get_channel(channel_id)
-            await message.channel.send(data)
+            await channel.send(data)
         else:
             em.set_author(name = "Message Deleted! <Text Type>", icon_url = "https://image.ibb.co/bZ6yHx/profile.png")
             em.add_field(name = "Author: ", value = str(message.author) + f"\nID: {author.id}",inline = False)
@@ -41,7 +41,7 @@ class EventLog:
             em.set_footer(text = "|NightWatch|",icon_url = self.bot.user.avatar_url)
             channel_id = 424195382172450817 #424195382172450817
             channel = self.bot.get_channel(channel_id)
-            await message.channel.send(embed = em)
+            await channel.send(embed = em)
 
     async def on_message_edit(self, before, after):
         '''Message EDIT EVENT'''
