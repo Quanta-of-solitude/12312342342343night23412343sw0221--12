@@ -90,7 +90,7 @@ class NightWatch:
             user = member
             channel_id = 356157029074862082 #general of Night Watch server
             channel = self.bot.get_channel(channel_id)
-            await channel.send(content = "Welcome {0.mention}, make sure to read <#358368642657812480>".format(user)) #as per alex
+            await channel.send(content = "Welcome {0.mention}, make sure to read <#357891899312570368> and <#358368642657812480> Have Fun! 😄".format(user)) #as per alex
         except Exception as e:
             print(e)
 
