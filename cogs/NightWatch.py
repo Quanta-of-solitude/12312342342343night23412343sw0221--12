@@ -95,7 +95,17 @@ class NightWatch:
             print(e)
 
     async def on_message(self, message):
-        '''Raven channel'''
+        '''Raven channel and bot usage limiter'''
+
+        if message.channel.id == 356157029074862082 and message.guild.id == 356157029074862081: #General chat & Night watch channel
+            msg = message.content.lower()
+            if msg.startswith("w!") or msg.startswith("!") or msg.startswith("t!") or msg.startswith("winter") or msg.startswith("-"):
+                await asyncio.sleep(2.5)
+                await message.channel.purge(limit= 15, check=lambda m: m.author.bot == True)
+                await message.channel.send(f"{message.author.mention}, please refrain using the bot commands here, goto <#357605857862746115> or the Bots Section. Sorry, 😅", delete_after = 7)
+                await asyncio.sleep(2)
+                await message.delete()
+                
         if message.channel.id == 423652777151954945 and message.guild.id == 356157029074862081: #GOLD RAVEN's outfit channel & Nightwatch server
             url = "{}".format(os.environ.get("gold_raven_channel"))
             data = myjson.get(url)
