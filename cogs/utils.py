@@ -240,6 +240,7 @@ class Utility:
 
 
     @commands.command()
+    @commands.check(is_owner)
     async def embed(self, ctx, *, params):
         '''Send complex rich embeds with this command!
 
