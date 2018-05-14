@@ -106,7 +106,7 @@ class NightWatch:
                 await asyncio.sleep(2)
                 await message.delete()
                 
-        if message.channel.id == 423652777151954945 and message.guild.id == 356157029074862081: #GOLD RAVEN's outfit channel & Nightwatch server
+        if message.channel.id == 445328817264001035 and message.guild.id == 356157029074862081: #GOLD RAVEN's outfit channel & Nightwatch server
             url = "{}".format(os.environ.get("gold_raven_channel"))
             data = myjson.get(url)
             data = json.loads(data)
