@@ -5,11 +5,12 @@ class Trader:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ["help"])
     async def about(self,ctx):
         '''help menu'''
         about = """```Made By Neophyte#5556\n\n\nNight Watch: Watching over the server 24/7 (Seriously, Not Stalking XD)\n\n"Hard Coded" to work only in Night Watch Server!```"""
-        helpm = "```\n1. n!svrtime: To get the AE servertime.\n2. n!gif [query]: Search gif.\n\nMore coming Later!\n\nPlus, Logging #gold-raven-sets 24/7 👍 and Stalking the member activities :3```"
+        helpm = "```\n1. n!svrtime: To get the AE servertime.\n2. n!gif [query]: Search gif.\n\nFilter(Admins):\n1. n!filtercheck\n2. n!addword\n3. n!delword\n\nMore coming Later!\n\nPlus, Logging #event-channels 👍 and Stalking the member activities :3```"
+
         em = discord.Embed(color = 0xffd500)
         em.set_thumbnail(url = self.bot.user.avatar_url)
         em.set_author(name = "About Night∆Watch:", icon_url = "https://image.ibb.co/bZ6yHx/profile.png")
