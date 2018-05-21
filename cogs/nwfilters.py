@@ -87,7 +87,7 @@ class NightFilter:
         if message.author.id == self.bot.user.id:
             return
         if any(word in msgs for word in texts) and message.author.guild_permissions.administrator != True:
-            me = message.guild.get_member(user_id = 280271578850263040)
+            #me = message.guild.get_member(user_id = 280271578850263040)
             if "{}".format(message.author.id) not in warn:
                 warn[f"{message.author.id}"] = {}
                 warn[f"{message.author.id}"]["count"] = 1
@@ -95,8 +95,8 @@ class NightFilter:
             else:
                 warn[f"{message.author.id}"]["count"] += 1
                 url2 = myjson.store(json.dumps(warn),update=url2)
-           # await message.author.send("Hello!\nYou are not allowed to use words that you used in your last message: `{0}`\n**it is against the community rules.**You m.\n`Doesn't matter how you used it.`\n\nWarning Count: {1}".format(message.content, warn[f"{message.author.id}"]["count"]))
-            await me.send("{0} wrote `{1}`\nCounter: {2}".format(message.author.name, message.content, warn[f"{message.author.id}"]["count"]))
+            await message.author.send("Hello!\nYou are not allowed to use words that you used in your last message: `{0}`\n**it is against the community rules.**You m.\n`Doesn't matter how you used it.`\n\nWarning Count: {1}".format(message.content, warn[f"{message.author.id}"]["count"]))
+            #await me.send("{0} wrote `{1}`\nCounter: {2}".format(message.author.name, message.content, warn[f"{message.author.id}"]["count"]))
             await asyncio.sleep(3)
             await message.delete()
 def setup(bot):
